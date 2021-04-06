@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaolimoon.blog.master.mapper.MessageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xiaolimoon.blog.master.model.Message">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="user_nickname" property="userNickname" />
+        <result column="content" property="content" />
+        <result column="parent_content_id" property="parentContentId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="findMessages" resultType="cn.xiaolimoon.blog.master.vo.MessageVO">
+        SELECT
+            id,user_nickname,content,parent_comment_id,create_time
+        FROM
+            message
+        ORDER BY
+            create_time DESC
+    </select>
+
+</mapper>

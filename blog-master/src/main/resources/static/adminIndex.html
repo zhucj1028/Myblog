@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>BlogAdmin</title>
+    <link rel="shortcut icon" href="assets/img/avatars.png" type="image/x-icon">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="assets/css/weather-icons.min.css" rel="stylesheet"/>
+    <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <script src="assets/js/skins.min.js"></script>
+</head>
+<body>
+<div class="loading-container">
+    <div class="loading-progress">
+        <div class="rotator">
+            <div class="rotator">
+                <div class="rotator colored">
+                    <div class="rotator">
+                        <div class="rotator colored">
+                            <div class="rotator colored"></div>
+                            <div class="rotator"></div>
+                        </div>
+                        <div class="rotator colored"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+        <div class="rotator"></div>
+    </div>
+</div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand">
+                    <small>
+                        <img src="assets/img/avatars.png" alt=""/>
+                    </small>
+                </a>
+            </div>
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-bars"></i>
+            </div>
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <div class="setting">
+                        <a id="btn-setting" title="Setting">
+                            <i class="icon glyphicon glyphicon-cog"></i>
+                        </a>
+                    </div>
+                    <div class="setting-container">
+                        <label>
+                            <a href="adminLogin.html">
+                                <input type="checkbox">
+                                <button>登录</button>
+                            </a>
+                        </label>
+                        <label>
+                            <a href="adminRegister.html">
+                                <input type="checkbox" id="checkbox_fixedsidebar">
+                                <button>注册</button>
+                            </a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <div class="page-sidebar">
+            <div class="sidebar-header-wrapper">
+                <input type="text" class="searchinput"/>
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">搜索</div>
+            </div>
+            <ul class="nav sidebar-menu">
+                <li>
+                    <a href="adminIndex.html">
+                        <i class="menu-icon glyphicon glyphicon-home"></i>
+                        <span class="menu-text">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminUserList.html">
+                        <i class="menu-icon fa fa-users"></i>
+                        <span class="menu-text"> 用户列表 </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-dropdown">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text">博客管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="adminAddBlog.html">
+                                <span class="menu-text">发布博客</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminManageBlog.html">
+                                <span class="menu-text">管理博客</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="adminAddLink.html">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminTag.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">标签管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminMessage.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">留言管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminDiary.html">
+                        <i class="menu-icon fa fa-book"></i>
+                        <span class="menu-text">日记管理</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>博客后台</h1>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="databox radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-themesecondary">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff"
+                                                 data-linecap="butt" data-percent="50" data-animate="500"
+                                                 data-linewidth="3" data-size="47"
+                                                 data-trackcolor="rgba(255,255,255,0.1)"><span
+                                                    class="white font-90">50%</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number themesecondary">14</span>
+                                        <div class="databox-text darkgray">文章篇数</div>
+                                        <div class="databox-stat themesecondary radius-bordered">
+                                            <i class="stat-icon icon-lg fa fa-tasks"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="databox radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-themethirdcolor">
+                                        <div class="databox-piechart">
+                                            <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff"
+                                                 data-linecap="butt" data-percent="15" data-animate="500"
+                                                 data-linewidth="3" data-size="47"
+                                                 data-trackcolor="rgba(255,255,255,0.2)"><span
+                                                    class="white font-90">15%</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number themethirdcolor">1</span>
+                                        <div class="databox-text darkgray">评论总数</div>
+                                        <div class="databox-stat themethirdcolor radius-bordered">
+                                            <i class="stat-icon  icon-lg fa fa-envelope-o"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="databox radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left bg-themeprimary">
+                                        <!--图标-->
+                                        <div class="databox-piechart">
+                                            <div id="users-pie" data-toggle="easypiechart" class="easyPieChart"
+                                                 data-barcolor="#fff" data-linecap="butt" data-percent="76"
+                                                 data-animate="500" data-linewidth="3" data-size="47"
+                                                 data-trackcolor="rgba(255,255,255,0.1)"><span
+                                                    class="white font-90">76%</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="databox-right">
+                                        <span class="databox-number themeprimary">98</span>
+                                        <div class="databox-text darkgray">留言总数</div>
+                                        <div class="databox-state bg-themeprimary">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="databox radius-bordered databox-shadowed databox-graded">
+                                    <div class="databox-left no-padding bordered-left-2 bordered-palegreen">
+                                        <img src="assets/img/avatar.jpg" style="width:65px; height:65px;">
+                                    </div>
+                                    <div class="databox-right padding-top-20">
+                                        <div class="databox-stat palegreen">
+                                            <i class="stat-icon icon-xlg fa fa-phone"></i>
+                                        </div>
+                                        <div class="databox-text darkgray">昵称：</div>
+                                        <div class="databox-text darkgray">登陆时间：</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="widget">
+                            <div class="widget-header ">
+                                <span class="widget-caption">访客数据</span>
+                            </div>
+                            <div class="widget-body">
+                                <table class="table table-striped table-hover table-bordered" id="editabledatatable">
+                                    <thead><tr role="row">
+                                        <th>code</th>
+                                        <th>位置</th>
+                                        <th>时间</th>
+                                    </tr></thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>重庆</td>
+                                        <td>2020-12-12 12:12:12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>重庆</td>
+                                        <td>2020-12-12 12:12:12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>03</td>
+                                        <td>重庆</td>
+                                        <td>2020-12-12 12:12:12</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Basic Scripts-->
+    <script src="assets/js/jquery-2.0.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Beyond Scripts-->
+    <script src="assets/js/beyond.min.js"></script>
+    <!--Page Related Scripts-->
+    <!--Sparkline Charts Needed Scripts-->
+    <script src="assets/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="assets/js/charts/sparkline/sparkline-init.js"></script>
+    <!--Easy Pie Charts Needed Scripts-->
+    <script src="assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="assets/js/charts/easypiechart/easypiechart-init.js"></script>
+    <!--Flot Charts Needed Scripts-->
+    <script src="assets/js/charts/flot/jquery.flot.js"></script>
+    <script src="assets/js/charts/flot/jquery.flot.resize.js"></script>
+    <script src="assets/js/charts/flot/jquery.flot.pie.js"></script>
+    <script src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
+    <script src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="www.yanshisan.cn" />
+    <meta name="robots" content="all" />
+    <title>日记</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="layui/css/layui.css" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="stylesheet" href="css/gloable.css" />
+    <link rel="stylesheet" href="css/nprogress.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+</head>
+<body>
+    <div class="header">
+    </div>
+    <header class="gird-header">
+        <div class="header-fixed">
+            <div class="header-inner">
+                <a href="javascript:void(0)" class="header-logo" id="logo">Mr.Zcj</a>
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="article.html">博客</a></li>
+                        <li><a href="message.html">留言</a></li>
+                        <li><a href="link.html">友链</a></li>
+                        <li><a href="diary.html">日记</a></li>
+                        <li><a href="my.html">关于</a></li>
+                    </ul>
+                </nav>
+                <a href="login.html" class="blog-user">
+                    <i class="fa fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="doc-container">
+         <div class="container-fixed">
+            <div class="timeline-box shadow">
+                <div class="timeline-main" id="diaryApp">
+                    <h1><i class="fa fa-clock-o"></i>日记</h1>
+                    <div class="timeline-line"></div>
+                        <div class="timeline-year" v-for="d in diary">
+                            <div class="timeline-month">
+                                <ul>
+                                    <li>
+                                        <div class="h4 animated fadeInLeft">
+                                            <p class="date" v-text="d.createTime">10月16日</p>
+                                        </div>
+                                        <p class="dot-circle animated ">
+                                            <i class="fa fa-dot-circle-o"></i>
+                                        </p>
+                                        <div class="content animated fadeInRight" v-html="d.content">江湖路远，有缘再见。
+                                        <p><img src="image/q.png"></p></div>
+                                        <div class="clear"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <h1 style="padding-top:4px;padding-bottom:2px;margin-top:40px;"><i class="fa fa-hourglass-end"></i>THE END</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="grid-footer">
+        <div class="footer-fixed">
+            <div class="copyright">
+                <div class="info">
+                    <b class="mt05">
+                        Copyright &copy; 2020 总要抱点妄想 All Rights Reserved<br>
+                        <a target="_blank" style="color:white" href="http://www.beian.miit.gov.cn/">黔ICP备2020011449号</a>
+                    </b>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery-2.0.3.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/yss/gloable.js"></script>
+    <script src="js/plugins/nprogress.js"></script>
+    <script src="vue/dist/vue-select.js"></script>
+    <script src="vue/dist/vue.js"></script>
+    <script src="js/project-js/diaryList.js"></script>
+    <script>NProgress.start();</script>
+    <script src="js/pagediary.js"></script>
+    <script>
+        window.onload = function () {
+            NProgress.done();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>index</title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="registerApp">
+    <form id="form-register" v-on:submit.prevent="register" class="well"
+          style="width: 30em; margin: auto; margin-top: 150px;">
+        <h3>用户注册</h3>
+        <div class=" input-group input-group-md">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+            <input type="text" name="phone" class="form-control" placeholder="手机号码"
+                   aria-describedby="sizing-addon1"/>
+        </div>
+        <br/>
+        <div class="input-group input-group-md">
+              <span  class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i></span>
+            <input type="text" name="nickname" class="form-control" placeholder="用户昵称"
+                   aria-describedby="sizing-addon1"/>
+        </div>
+        <br>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" name="password" class="form-control"
+                   placeholder="设置密码4-20个字母、数字、下划线"
+                   aria-describedby="sizing-addon1"/>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-success btn-block">注册</button>
+        <a class="btn btn-sm btn-white btn-block" style="text-align: right;" href="login.html">
+            <h6>已注册,前往登录！</h6>
+        </a>
+    </form>
+</div>
+<script src="js/project-js/register.js"></script>
+</body>
+</html>

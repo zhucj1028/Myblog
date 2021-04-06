@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>BlogAdmin</title>
+    <link rel="shortcut icon" href="assets/img/avatars.png" type="image/x-icon">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="assets/css/weather-icons.min.css" rel="stylesheet"/>
+    <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet"/>
+    <link href="assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="vue/dist/vue-select.css" rel="stylesheet"/>
+    <link href="assets/summernote/summernote.css" rel="stylesheet"/>
+    <script src="assets/js/skins.min.js"></script>
+    <script src="vue/dist/vue-select.js"></script>
+    <script src="vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="loading-container">
+    <div class="loading-progress">
+        <div class="rotator">
+            <div class="rotator">
+                <div class="rotator colored">
+                    <div class="rotator">
+                        <div class="rotator colored">
+                            <div class="rotator colored"></div>
+                            <div class="rotator"></div>
+                        </div>
+                        <div class="rotator colored"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+        <div class="rotator"></div>
+    </div>
+</div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <img src="assets/img/avatars.png" alt=""/>
+                    </small>
+                </a>
+            </div>
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-bars"></i>
+            </div>
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <div class="setting">
+                        <a id="btn-setting" title="Setting">
+                            <i class="icon glyphicon glyphicon-cog"></i>
+                        </a>
+                    </div>
+                    <div class="setting-container">
+                        <label>
+                            <a href="adminLogin.html">
+                                <input type="checkbox">
+                                <button>登录</button>
+                            </a>
+                        </label>
+                        <label>
+                            <a href="adminRegister.html">
+                                <input type="checkbox" id="checkbox_fixedsidebar">
+                                <button>注册</button>
+                            </a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <div class="page-sidebar" id="sidebar"z>
+            <div class="sidebar-header-wrapper">
+                <input type="text" class="searchinput"/>
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">搜索</div>
+            </div>
+            <ul class="nav sidebar-menu">
+                <li>
+                    <a href="adminIndex.html">
+                        <i class="menu-icon glyphicon glyphicon-home"></i>
+                        <span class="menu-text">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminUserList.html">
+                        <i class="menu-icon fa fa-users"></i>
+                        <span class="menu-text"> 用户列表 </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-dropdown">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text">博客管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="adminAddBlog.html">
+                                <span class="menu-text">发布博客</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminManageBlog.html">
+                                <span class="menu-text">管理博客</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="adminAddLink.html">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminTag.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">标签管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminMessage.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">留言管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminDiary.html">
+                        <i class="menu-icon fa fa-book"></i>
+                        <span class="menu-text">日记管理</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content">
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>发表博客</h1>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="row" id="createQuestionApp">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget flat radius-bordered">
+                            <form id="form-comment" v-on:submit.prevent="createQuestion">
+                                <div class="form-group">
+                                    <label>标题:</label>
+                                    <input type="text" class="form-control" id="title" placeholder="请填写标题3~50字符"
+                                           pattern="^.{3,50}$" required v-model="title">
+                                </div>
+                                <div class="form-group">
+                                    <label>请选择标签</label>
+                                    <v-select :options="tags" v-model="selectedTagIds"
+                                              :reduce="option => option.value"
+                                              :selectable="() => selectedTagIds.length < 3"
+                                              multiple required
+                                              placeholder="请选择博客的标签(最多选择3个)">
+                                    </v-select>
+                                </div>
+                                <div class="form-group">
+                                    <!--富文本编辑器 start-->
+                                    <label for="summernote">博客正文</label>
+                                    <textarea name="content" id="summernote"></textarea>
+                                    <!--富文本编辑器 end-->
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">发布博客</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery-2.0.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/beyond.min.js"></script>
+<script src="js/project-js/create.js"></script>
+<script src="assets/summernote/summernote.js"></script>
+<script src="js/project-js/init_summernote.js"></script>
+</body>
+</html>

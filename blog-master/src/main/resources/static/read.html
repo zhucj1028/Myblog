@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width"/>
+    <title>文章阅读</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="layui/css/layui.css"/>
+    <link rel="stylesheet" href="css/master.css"/>
+    <link rel="stylesheet" href="css/gloable.css"/>
+    <link rel="stylesheet" href="css/nprogress.css"/>
+    <link rel="stylesheet" href="css/blog.css"/>
+</head>
+<body>
+<div class="header">
+</div>
+<header class="gird-header">
+    <div class="header-fixed">
+        <div class="header-inner">
+            <a href="javascript:void(0)" class="header-logo" id="logo">Mr.Zcj</a>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="article.html">博客</a></li>
+                    <li><a href="message.html">留言</a></li>
+                    <li><a href="link.html">友链</a></li>
+                    <li><a href="diary.html">日记</a></li>
+                    <li><a href="my.html">关于</a></li>
+                </ul>
+            </nav>
+            <a href="login.html" class="blog-user">
+                <i class="fa fa-user-circle"></i>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="doc-container">
+    <div class="container-fixed">
+        <div class="col-content" style="width:100%">
+            <div class="inner">
+                <article class="article-list">
+                    <section class="article-item">
+                        <div id="questionInfoApp">
+                            <div>
+                                <aside class="title" style="line-height:1.5;">
+                                    <h4><a v-text="questions.title">.NET Spire.Doc组件</a></h4>
+                                    <p class="fc-grey fs-14">
+                                        <small>作者：
+                                            <a target="_blank"
+                                               class="fc-link" v-text="questions.userNickname">无趣</a>
+                                        </small>
+                                        <small class="ml10">发布于 <label
+                                                v-text="questions.createTime">2021-01-01:17:30:24</label> </small>
+                                    </p>
+                                </aside>
+                                <div class="time mt10" style="padding-bottom:0;">
+                                    <div class="f-fl tags" v-for="tag in questions.tags">
+                                        <span class="fa fa-tags fs-16"></span>
+                                        <a class="tag" v-text="tag.name">SpringBoot</a>
+                                    </div>
+                                </div>
+                                <div class="content artiledetail"
+                                     style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
+                                    <!--<div>
+                                        <a><img src="image/cloud5.jpg" width="600" height="350"></a>
+                                    </div>-->
+                                    <p v-html="questions.content">
+                                        Spire.Doc for .NET是一款由E-iceblue公司开发的专业的Word
+                                        .NET类库，使用该工具开发人员可以在任意.NET平台（C#，VB.NET，ASP.NET）上快速创建，读取，写入，
+                                        转换，打印Word文档。作为一个独立的Word 组件， Spire.Doc的运行无需安装Microsoft Word。
+                                        而且，它可以将Microsoft Word文档创建功能集成到开发者的任何.NET应用程序。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="content" style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
+                                <h6>发表评论</h6>
+                                <div class="layui-field-box" id="writeCommentApp">
+                                    <div class="leavemessage" style="text-align:initial">
+                                        <form id="form-comment" class="layui-form blog-editor" action=""
+                                              v-on:submit.prevent="postComment">
+                                            <div class="layui-form-item layui-form-text">
+                                                <div>
+                                                    <textarea name="content" id="Editor" placeholder="搞点什么^-^"
+                                                              class="layui-textarea" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <button class="layui-btn" lay-submit="formLeaveMessage"
+                                                        lay-filter="formLeaveMessage">提交评论
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="blog-comment" page-count="1" id="commentApp">
+                                <li v-for="comment in comments">
+                                    <div class="comment-parent">
+                                        <a name="remark-118"></a><img
+                                            src="https://thirdqq.qlogo.cn/g?b=oidb&amp;k=RSXMjGpUZ1KN7BM1MIibSKg&amp;s=100&amp;t=1556992789"
+                                            alt="断了线的风筝">
+                                        <div class="info"><span class="username" v-text="comment.userNickname">无趣</span></div>
+                                        <div class="comment-content" v-text="comment.content">还不错哦</div>
+                                        <p class="info info-footer">
+                                            <span class="comment-time" v-text="comment.createTime">2021/01/01 12:27:46</span>
+                                            <a href="#" v-on:click="loadError">回复</a>
+                                            <!--<a href="javascript:;" class="btn-reply" data-targetid="210"
+                                               data-targetname="断了线的风筝">回复</a>-->
+                                        </p>
+                                    </div>
+                                    <hr>
+                                    <!--<div class="comment-child">
+                                        <a name="reply-119"></a>
+                                        <img src="https://thirdqq.qlogo.cn/g?b=oidb&amp;k=4o1ExEW6tDIG3zUdx2I01A&amp;s=100&amp;t=1552663319"
+                                             alt="隐/">
+                                        <div class="info"><span class="username">隐</span>
+                                            <span class="blogger">站长</span>
+                                            <span style="padding-right:0;margin-left:-5px;">回复</span>
+                                            <span class="username">断了线的风筝</span>
+                                            <span>欢迎欢迎&nbsp;<img src="https://www.yanshisan.cn/layui/images/face/11.gif"
+                                                                 alt="[爱你]">
+                                                </span>
+                                        </div>
+                                        <p class="info">
+                                            <span class="comment-time">2019/11/30 13:56:30</span>
+                                            <a href="javascript:;" class="btn-reply" data-targetid="1"
+                                               data-targetname="隐">回复</a>
+                                        </p>
+                                    </div>-->
+                                    <!--<div class="replycontainer layui-hide">
+                                        <form class="layui-form" action="">
+                                            <input type="hidden" name="remarkId" value="118">
+                                            <input type="hidden" name="targetUserId" value="0">
+                                            <input type="hidden" name="articleId" value="20">
+                                            <div class="layui-form-item">
+                                                    <textarea name="replyContent" lay-verify="replyContent"
+                                                              placeholder="请输入回复内容" class="layui-textarea"
+                                                              style="min-height:80px;"></textarea>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <button class="layui-btn layui-btn-xs" lay-submit="formReply"
+                                                        lay-filter="formReply">提交
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="layui-flow-more">没有更多了</div>-->
+                                </li>
+                                <div class="layui-flow-more">没有更多了</div>
+                            </ul>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="grid-footer">
+    <div class="footer-fixed">
+        <div class="copyright">
+            <div class="info">
+                <div class="info">
+                    <b class="mt05">
+                        Copyright &copy; 2020 总要抱点妄想 All Rights Reserved<br>
+                        <a target="_blank" style="color:white" href="http://www.beian.miit.gov.cn/">黔ICP备2020011449号</a>
+                    </b>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="assets/js/jquery-2.0.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="layui/layui.js"></script>
+<script src="vue/dist/vue-select.js"></script>
+<script src="vue/dist/vue.js"></script>
+<script src="js/project-js/comment.js"></script>
+<script src="js/project-js/read.js"></script>
+<script src="js/project-js/postComment.js"></script>
+<script src="js/yss/gloable.js"></script>
+<script src="js/plugins/nprogress.js"></script>
+<script src="js/pagecomment.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>BlogAdmin</title>
+    <link rel="shortcut icon" href="assets/img/avatars.png" type="image/x-icon">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="assets/css/weather-icons.min.css" rel="stylesheet"/>
+    <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet"/>
+    <link href="assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="layui/css/layui.css"/>
+    <link href="assets/summernote/summernote.css" rel="stylesheet"/>
+    <script src="assets/js/skins.min.js"></script>
+    <script src="vue/dist/vue-select.js"></script>
+    <script src="vue/dist/vue.js"></script>
+    <script src="layui/layui.js"></script>
+</head>
+<body>
+<div class="loading-container">
+    <div class="loading-progress">
+        <div class="rotator">
+            <div class="rotator">
+                <div class="rotator colored">
+                    <div class="rotator">
+                        <div class="rotator colored">
+                            <div class="rotator colored"></div>
+                            <div class="rotator"></div>
+                        </div>
+                        <div class="rotator colored"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+        <div class="rotator"></div>
+    </div>
+</div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand">
+                    <small>
+                        <img src="assets/img/avatars.png" alt=""/>
+                    </small>
+                </a>
+            </div>
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-bars"></i>
+            </div>
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <div class="setting">
+                        <a id="btn-setting" title="Setting">
+                            <i class="icon glyphicon glyphicon-cog"></i>
+                        </a>
+                    </div>
+                    <div class="setting-container">
+                        <label>
+                            <a href="adminLogin.html">
+                                <input type="checkbox">
+                                <button>登录</button>
+                            </a>
+                        </label>
+                        <label>
+                            <a href="adminRegister.html">
+                                <input type="checkbox" id="checkbox_fixedsidebar">
+                                <button>注册</button>
+                            </a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <div class="page-sidebar" id="sidebar">
+            <div class="sidebar-header-wrapper">
+                <input type="text" class="searchinput"/>
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">搜索</div>
+            </div>
+            <ul class="nav sidebar-menu">
+                <li>
+                    <a href="adminIndex.html">
+                        <i class="menu-icon glyphicon glyphicon-home"></i>
+                        <span class="menu-text">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminUserList.html">
+                        <i class="menu-icon fa fa-users"></i>
+                        <span class="menu-text"> 用户列表 </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-dropdown">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text">博客管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="adminAddBlog.html">
+                                <span class="menu-text">发布博客</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminManageBlog.html">
+                                <span class="menu-text">管理博客</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="adminAddLink.html">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminTag.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">标签管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminMessage.html">
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">留言管理</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminDiary.html">
+                        <i class="menu-icon fa fa-book"></i>
+                        <span class="menu-text">日记管理</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content">
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>日记管理</h1>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 col-xs-12" id="diaryApp">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="textarea-wrap message">
+                            <form id="form-comment" class="layui-form blog-editor" v-on:submit.prevent="create">
+                                <div class="form-group">
+                                    <!--富文本编辑器 start-->
+                                    <label for="summernote">日记正文</label>
+                                    <textarea name="content" id="summernote"></textarea>
+                                    <!--富文本编辑器 end-->
+                                </div>
+                                <button class="layui-btn" lay-submit="formLeaveMessage" lay-filter="formLeaveMessage">
+                                    发布日记
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                        <tr role="row">
+                            <th>ID</th>
+                            <th>日记</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody v-for="d in diary">
+                        <tr>
+                            <td style="table-layout: fixed; text-overflow: ellipsis;overflow: hidden" v-text="d.id">01</td>
+                            <td style="table-layout: fixed; text-overflow: ellipsis;overflow: scroll" v-text="d.content">你别上班了</td>
+                            <td style="table-layout: fixed; text-overflow: ellipsis;overflow: hidden" v-text="d.createTime">2020-12-12</td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i> 修改</a>
+                                <a href="#" class="btn btn-danger btn-xs delete" v-on:click.prevent="deleteDiary(d.id)"><i class="fa fa-trash-o"></i>删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-2.0.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/beyond.min.js"></script>
+    <script src="js/project-js/diaryList.js"></script>
+    <script src="assets/summernote/summernote.js"></script>
+    <script src="js/project-js/init_summernote.js"></script>
+</body>
+</html>
